@@ -26,7 +26,7 @@ export default async ({ req, res, log, error }) => {
 		const clientSecret = appleSigninAuth.getClientSecret({
 			clientID: process.env.APPWRITE_BUNDLE_ID,
 			teamID: process.env.APPLE_TEAM_ID,
-			privateKey: process.env.APPLE_PRIVATE_KEY,
+			privateKey: process.env.APPLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
 			keyIdentifier: process.env.APPLE_KEY_ID,
 		})
 
