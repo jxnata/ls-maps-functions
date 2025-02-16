@@ -1,4 +1,4 @@
-import { Client, ID, Query, Users } from 'node-appwrite'
+import { Client, ID, Query, Users, Databases } from 'node-appwrite'
 import appleSigninAuth from 'apple-signin-auth'
 import crypto from 'crypto'
 
@@ -10,6 +10,7 @@ client
 	.setKey(process.env.APPWRITE_API_KEY)
 
 const users = new Users(client)
+const databases = new Databases(client)
 
 export default async ({ req, res, log, error }) => {
 	try {
@@ -56,9 +57,30 @@ export default async ({ req, res, log, error }) => {
 		if (search.total === 0) {
 			const newUser = await users.create(ID.unique(), appleIdTokenClaims.email, undefined, undefined, name)
 
-			const token = await users.createToken(newUser.$id)
+			// Create a new publisher for user
+			await databases.createDocument('production', 'publishers', ID.unique(), {
+				user: newUser.$id,
+				name: name || '',
+				congregation: payload.congregation || '',
+				created_at: new Date().toISOString(),
+			})
 
+			const token = await users.createToken(newUser.$id)
 			return res.send(token)
+		}
+
+		// Verify if the publisher already exists
+		const publisherSearch = await databases.listDocuments('production', 'publishers', [
+			Query.equal('user', search.users[0].$id),
+		])
+
+		if (publisherSearch.total === 0) {
+			await databases.createDocument('production', 'publishers', ID.unique(), {
+				user: search.users[0].$id,
+				name: name || '',
+				congregation: payload.congregation || '',
+				created_at: new Date().toISOString(),
+			})
 		}
 
 		const token = await users.createToken(search.users[0].$id)
