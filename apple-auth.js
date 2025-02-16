@@ -62,7 +62,6 @@ export default async ({ req, res, log, error }) => {
 				user: newUser.$id,
 				name: name || '',
 				congregation: payload.congregation || '',
-				created_at: new Date().toISOString(),
 			})
 
 			const token = await users.createToken(newUser.$id)
@@ -79,7 +78,6 @@ export default async ({ req, res, log, error }) => {
 				user: search.users[0].$id,
 				name: name || '',
 				congregation: payload.congregation || '',
-				created_at: new Date().toISOString(),
 			})
 		}
 
