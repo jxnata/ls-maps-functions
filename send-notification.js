@@ -23,32 +23,29 @@ export default async ({ req, res, log, error }) => {
 		const map = await databases.getDocument('production', 'maps', payload.$id)
 
 		// Configure OneSignal notification payload
+		const url = 'https://api.onesignal.com/notifications?c=push'
+
 		const options = {
 			method: 'POST',
 			headers: {
 				accept: 'application/json',
-				Authorization: `Basic ${process.env.ONESIGNAL_REST_API_KEY}`,
+				Authorization: `Key ${process.env.ONESIGNAL_REST_API_KEY}`,
 				'content-type': 'application/json',
 			},
 			body: JSON.stringify({
 				app_id: process.env.ONESIGNAL_APP_ID,
-				include_external_user_ids: [payload.assigned],
 				headings: {
 					en: 'Você recebeu uma designação',
 				},
 				contents: {
 					en: `${map.city.name} - ${map.name}\n${map.address}`,
 				},
-				// Optional: you can add data property for custom data
-				data: {
-					map_id: map.$id,
-					type: 'assignment',
-				},
+				include_external_user_ids: [payload.assigned],
 			}),
 		}
 
 		// Send the notification using the new endpoint
-		const response = await fetch('https://api.onesignal.com/notifications?c=push', options)
+		const response = await fetch(url, options)
 		log(response)
 		if (!response.ok) {
 			throw new Error('Failed to send OneSignal notification')
