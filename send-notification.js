@@ -22,7 +22,7 @@ export default async ({ req, res, log, error }) => {
 		// Get the map from the database
 		const map = await databases.getDocument('production', 'maps', payload.$id)
 
-		// Configure OneSignal
+		// Configure OneSignal notification payload
 		const options = {
 			method: 'POST',
 			headers: {
@@ -33,13 +33,22 @@ export default async ({ req, res, log, error }) => {
 			body: JSON.stringify({
 				app_id: process.env.ONESIGNAL_APP_ID,
 				include_external_user_ids: [payload.assigned],
-				headings: { en: 'Você recebeu uma designação' },
-				contents: { en: `${map.city.name} - ${map.name}\n${map.address}` },
+				headings: {
+					en: 'Você recebeu uma designação',
+				},
+				contents: {
+					en: `${map.city.name} - ${map.name}\n${map.address}`,
+				},
+				// Optional: you can add data property for custom data
+				data: {
+					map_id: map.$id,
+					type: 'assignment',
+				},
 			}),
 		}
 
-		// Send the notification
-		const response = await fetch('https://onesignal.com/api/v1/notifications', options)
+		// Send the notification using the new endpoint
+		const response = await fetch('https://api.onesignal.com/notifications?c=push', options)
 
 		if (!response.ok) {
 			throw new Error('Failed to send OneSignal notification')
