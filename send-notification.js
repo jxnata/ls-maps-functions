@@ -45,7 +45,7 @@ export default async ({ req, res, log, error }) => {
 			},
 		})
 
-		log(result)
+		log({ status: result.status, data: result.data })
 
 		return res.send('Notification sent successfully', 200)
 	} catch (exception) {
