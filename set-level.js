@@ -14,6 +14,8 @@ export default async ({ req, res, log, error }) => {
 		// Get the event data from the request
 		const payload = req.body
 
+		log(req.body)
+
 		// Check if this is a user update event and involves labels
 		if (payload.event !== 'users.update' || !payload.changes?.labels) {
 			return res.send('Not a relevant user update event', 200)

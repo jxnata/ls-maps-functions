@@ -56,6 +56,7 @@ export default async ({ req, res, log, error }) => {
 
 		if (search.total === 0) {
 			const newUser = await users.create(ID.unique(), appleIdTokenClaims.email, undefined, undefined, name)
+			await users.updateLabels(newUser.$id, [payload.congregation])
 
 			// Create a new publisher for user
 			const newPublisher = await databases.createDocument('production', 'publishers', ID.unique(), {
