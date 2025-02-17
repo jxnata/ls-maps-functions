@@ -58,15 +58,17 @@ export default async ({ req, res, log, error }) => {
 			const newUser = await users.create(ID.unique(), appleIdTokenClaims.email, undefined, undefined, name)
 
 			// Create a new publisher for user
-			await databases.createDocument('production', 'publishers', ID.unique(), {
+			const newPublisher = await databases.createDocument('production', 'publishers', ID.unique(), {
 				user: newUser.$id,
 				name: name || '',
 				congregation: payload.congregation || '',
 			})
 
 			const token = await users.createToken(newUser.$id)
-			return res.send(token)
+			return res.send({ ...token, publisherId: newPublisher.$id })
 		}
+
+		let publisherId
 
 		// Verify if the publisher already exists
 		const publisherSearch = await databases.listDocuments('production', 'publishers', [
@@ -74,16 +76,20 @@ export default async ({ req, res, log, error }) => {
 		])
 
 		if (publisherSearch.total === 0) {
-			await databases.createDocument('production', 'publishers', ID.unique(), {
+			const newPublisher = await databases.createDocument('production', 'publishers', ID.unique(), {
 				user: search.users[0].$id,
 				name: name || '',
 				congregation: payload.congregation || '',
 			})
+
+			publisherId = newPublisher.$id
+		} else {
+			publisherId = publisherSearch.documents[0].$id
 		}
 
 		const token = await users.createToken(search.users[0].$id)
 
-		return res.send(token)
+		return res.send({ ...token, publisherId })
 	} catch (exception) {
 		error(exception)
 		return res.send('Authentication failed, please try again later.', 500)
