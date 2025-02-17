@@ -34,28 +34,19 @@ export default async ({ req, res, log, error }) => {
 			contents: {
 				en: `${map.city.name} - ${map.name}\n${map.address}`,
 			},
-			include_external_user_ids: [payload.assigned],
+			include_external_user_ids: [payload.assigned.$id],
 		}
 
-		// Log dos dados antes de enviar
-		log('Sending notification with data:', notificationData)
-
 		// Send the notification using axios
-		const response = await axios.post(url, notificationData, {
+		await axios.post(url, notificationData, {
 			headers: {
 				Authorization: `Key ${process.env.ONESIGNAL_REST_API_KEY}`,
 				'Content-Type': 'application/json',
 			},
 		})
 
-		log('OneSignal response:', response.data)
 		return res.send('Notification sent successfully', 200)
 	} catch (exception) {
-		// Melhor tratamento de erro
-		log('Error details:', {
-			message: exception.message,
-			response: exception.response?.data,
-		})
 		error(exception)
 		return res.send('Send notification failed, please try again later.', 500)
 	}
