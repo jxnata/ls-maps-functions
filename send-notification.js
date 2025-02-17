@@ -1,4 +1,5 @@
 import { Client, Databases } from 'node-appwrite'
+import axios from 'axios'
 
 const client = new Client()
 
@@ -25,31 +26,26 @@ export default async ({ req, res, log, error }) => {
 		// Configure OneSignal notification payload
 		const url = 'https://api.onesignal.com/notifications?c=push'
 
-		const options = {
-			method: 'POST',
-			headers: {
-				accept: 'application/json',
-				Authorization: `Key ${process.env.ONESIGNAL_REST_API_KEY}`,
-				'content-type': 'application/json',
+		const notificationData = {
+			app_id: process.env.ONESIGNAL_APP_ID,
+			headings: {
+				en: 'Você recebeu uma designação',
 			},
-			body: JSON.stringify({
-				app_id: process.env.ONESIGNAL_APP_ID,
-				headings: {
-					en: 'Você recebeu uma designação',
-				},
-				contents: {
-					en: `${map.city.name} - ${map.name}\n${map.address}`,
-				},
-				include_external_user_ids: [payload.assigned],
-			}),
+			contents: {
+				en: `${map.city.name} - ${map.name}\n${map.address}`,
+			},
+			include_external_user_ids: [payload.assigned],
 		}
 
-		// Send the notification using the new endpoint
-		const response = await fetch(url, options)
+		// Send the notification using axios
+		const response = await axios.post(url, notificationData, {
+			headers: {
+				Authorization: `Key ${process.env.ONESIGNAL_REST_API_KEY}`,
+				'Content-Type': 'application/json',
+			},
+		})
+
 		log(response)
-		if (!response.ok) {
-			throw new Error('Failed to send OneSignal notification')
-		}
 
 		return res.send('Notification sent successfully', 200)
 	} catch (exception) {
