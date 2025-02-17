@@ -37,6 +37,9 @@ export default async ({ req, res, log, error }) => {
 			include_external_user_ids: [payload.assigned],
 		}
 
+		// Log dos dados antes de enviar
+		log('Sending notification with data:', notificationData)
+
 		// Send the notification using axios
 		const response = await axios.post(url, notificationData, {
 			headers: {
@@ -45,10 +48,14 @@ export default async ({ req, res, log, error }) => {
 			},
 		})
 
-		log(response)
-
+		log('OneSignal response:', response.data)
 		return res.send('Notification sent successfully', 200)
 	} catch (exception) {
+		// Melhor tratamento de erro
+		log('Error details:', {
+			message: exception.message,
+			response: exception.response?.data,
+		})
 		error(exception)
 		return res.send('Send notification failed, please try again later.', 500)
 	}
