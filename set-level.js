@@ -14,26 +14,16 @@ export default async ({ req, res, log, error }) => {
 		// Get the event data from the request
 		const payload = req.body
 
-		log(req.body)
-
 		// Check if this is a user update event and involves labels
-		if (payload.event !== 'users.update' || !payload.changes?.labels) {
+		if (!payload.labels) {
 			return res.send('Not a relevant user update event', 200)
 		}
 
-		const userId = payload.userId
-		const labelChanges = payload.changes.labels
-
 		// Check if 'admin' label was added or removed
-		const adminAdded = labelChanges.added?.includes('admin')
-		const adminRemoved = labelChanges.removed?.includes('admin')
-
-		if (!adminAdded && !adminRemoved) {
-			return res.send('No admin label changes', 200)
-		}
+		const adminAdded = payload.labels.includes('admin')
 
 		// Find the publisher in production database
-		const publisher = await databases.listDocuments('production', 'publishers', [Query.equal('user', userId)])
+		const publisher = await databases.listDocuments('production', 'publishers', [Query.equal('user', payload.$id)])
 
 		if (publisher.documents.length === 0) {
 			return res.send('No publisher found for this user', 200)
