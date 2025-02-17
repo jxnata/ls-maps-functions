@@ -1,0 +1,51 @@
+[
+	{
+		"_id": "656f28ec19095b48258452ed",
+		"new_id": "67b12de80036d819999b",
+		"name": "LS Irecê BA",
+		"created_at": "2023-12-05T13:43:08.209Z",
+		"__v": 0
+	},
+	{
+		"_id": "660aa55fdbf0c46bcab7216f",
+		"new_id": "67b12e6700053083d738",
+		"name": "LS Itabuna BA",
+		"created_at": "2024-04-01T12:15:27.260Z",
+		"__v": 0
+	},
+	{
+		"_id": "663a428a3665b23a3e7c824e",
+		"new_id": "67b12e94002ab8c05496",
+		"name": "LS Açailândia MA",
+		"created_at": "2024-05-07T15:02:34.228Z",
+		"__v": 0
+	},
+	{
+		"_id": "667c2e3835d9114870fa76d7",
+		"new_id": "67b12eac001c2c671464",
+		"name": "LS Vilhena RO",
+		"created_at": "2024-06-26T15:05:28.382Z",
+		"__v": 0
+	},
+	{
+		"_id": "66c3a62a122704faebd6de1d",
+		"new_id": "67b12ebd0006ce74cdf2",
+		"name": "LS Campos dos Goytacazes RJ",
+		"created_at": "2024-08-19T20:08:10.441Z",
+		"__v": 0
+	},
+	{
+		"_id": "6757293368945bcfe5d36d72",
+		"new_id": "67b12ee7002bd24c3700",
+		"name": "LS Central - Feira de Santana BA",
+		"created_at": "2024-12-09T17:30:27.959Z",
+		"__v": 0
+	},
+	{
+		"_id": "67680ed4dc8d6ad79d183629",
+		"new_id": "67b12ef7002045ca3e00",
+		"name": "LS Amélia Rodrigues BA",
+		"created_at": "2024-12-22T13:06:28.440Z",
+		"__v": 0
+	}
+]

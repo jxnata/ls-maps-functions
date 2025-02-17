@@ -1,0 +1,268 @@
+[
+	{
+		"_id": "656f295919095b48258452fa",
+		"name": "A- Irecê",
+		"congregation": "67b12de80036d819999b",
+		"created_at": "2023-12-05T13:44:57.861Z",
+		"__v": 0
+	},
+	{
+		"_id": "65842662790b2e3a14477e14",
+		"name": "E- João Dourado",
+		"congregation": "67b12de80036d819999b",
+		"created_at": "2023-12-21T11:49:54.660Z",
+		"__v": 0
+	},
+	{
+		"_id": "6584266c790b2e3a14477e16",
+		"name": "G- São Gabriel",
+		"congregation": "67b12de80036d819999b",
+		"created_at": "2023-12-21T11:50:04.436Z",
+		"__v": 0
+	},
+	{
+		"_id": "658a3c73514431961ff3ac3a",
+		"name": "C- Presidente Dutra",
+		"congregation": "67b12de80036d819999b",
+		"created_at": "2023-12-26T02:37:39.222Z",
+		"__v": 0
+	},
+	{
+		"_id": "65d35987982154ba74705d5a",
+		"name": "B- Lapão",
+		"congregation": "67b12de80036d819999b",
+		"created_at": "2024-02-19T13:37:11.305Z",
+		"__v": 0
+	},
+	{
+		"_id": "65dd115688f0003ccbcfaad2",
+		"name": "H- Uibaí ",
+		"congregation": "67b12de80036d819999b",
+		"created_at": "2024-02-26T22:31:50.485Z",
+		"__v": 0
+	},
+	{
+		"_id": "6606ad2a2be310bd8b1853d2",
+		"name": "F- Jussara",
+		"congregation": "67b12de80036d819999b",
+		"created_at": "2024-03-29T11:59:38.802Z",
+		"__v": 0
+	},
+	{
+		"_id": "660b54ad19e1924e2ce449fb",
+		"name": "Itabuna",
+		"congregation": "67b12e6700053083d738",
+		"created_at": "2024-04-02T00:43:25.320Z",
+		"__v": 0
+	},
+	{
+		"_id": "663a457d3665b23a3e7c8304",
+		"name": "Açailândia ",
+		"congregation": "67b12e94002ab8c05496",
+		"created_at": "2024-05-07T15:15:09.681Z",
+		"__v": 0
+	},
+	{
+		"_id": "663a47ff3665b23a3e7c83d2",
+		"name": "Vila ildemar ",
+		"congregation": "67b12e94002ab8c05496",
+		"created_at": "2024-05-07T15:25:51.475Z",
+		"__v": 0
+	},
+	{
+		"_id": "66438e7acdc0513332e3e5f3",
+		"name": "Jardim Aulidia ",
+		"congregation": "67b12e94002ab8c05496",
+		"created_at": "2024-05-14T16:16:58.577Z",
+		"__v": 0
+	},
+	{
+		"_id": "66438e92cdc0513332e3e5ff",
+		"name": "Vale do açaí ",
+		"congregation": "67b12e94002ab8c05496",
+		"created_at": "2024-05-14T16:17:22.612Z",
+		"__v": 0
+	},
+	{
+		"_id": "66438e9dcdc0513332e3e607",
+		"name": "Plano da serra ",
+		"congregation": "67b12e94002ab8c05496",
+		"created_at": "2024-05-14T16:17:33.713Z",
+		"__v": 0
+	},
+	{
+		"_id": "66438ea6cdc0513332e3e60f",
+		"name": "Pequiá ",
+		"congregation": "67b12e94002ab8c05496",
+		"created_at": "2024-05-14T16:17:42.262Z",
+		"__v": 0
+	},
+	{
+		"_id": "66438eb6cdc0513332e3e61b",
+		"name": "Bom jardim ",
+		"congregation": "67b12e94002ab8c05496",
+		"created_at": "2024-05-14T16:17:58.816Z",
+		"__v": 0
+	},
+	{
+		"_id": "66438f48cdc0513332e3e638",
+		"name": "Laranjeiras ",
+		"congregation": "67b12e94002ab8c05496",
+		"created_at": "2024-05-14T16:20:24.201Z",
+		"__v": 0
+	},
+	{
+		"_id": "664408accc963fed61aecf3a",
+		"name": "Centro ",
+		"congregation": "67b12e94002ab8c05496",
+		"created_at": "2024-05-15T00:58:20.212Z",
+		"__v": 0
+	},
+	{
+		"_id": "66440942cc963fed61aecf46",
+		"name": "Boa Vista ",
+		"congregation": "67b12e94002ab8c05496",
+		"created_at": "2024-05-15T01:00:50.176Z",
+		"__v": 0
+	},
+	{
+		"_id": "664409b0cc963fed61aecf52",
+		"name": "Jardim América ",
+		"congregation": "67b12e94002ab8c05496",
+		"created_at": "2024-05-15T01:02:40.111Z",
+		"__v": 0
+	},
+	{
+		"_id": "66441bc3cc963fed61aed489",
+		"name": "Jardim glória ",
+		"congregation": "67b12e94002ab8c05496",
+		"created_at": "2024-05-15T02:19:47.094Z",
+		"__v": 0
+	},
+	{
+		"_id": "66441bcdcc963fed61aed491",
+		"name": "Vila Maranhão ",
+		"congregation": "67b12e94002ab8c05496",
+		"created_at": "2024-05-15T02:19:57.611Z",
+		"__v": 0
+	},
+	{
+		"_id": "66441bdacc963fed61aed499",
+		"name": "Jacú ",
+		"congregation": "67b12e94002ab8c05496",
+		"created_at": "2024-05-15T02:20:10.612Z",
+		"__v": 0
+	},
+	{
+		"_id": "66441be5cc963fed61aed4a1",
+		"name": "Flávio Dino ",
+		"congregation": "67b12e94002ab8c05496",
+		"created_at": "2024-05-15T02:20:21.428Z",
+		"__v": 0
+	},
+	{
+		"_id": "66442ad3cc963fed61aedced",
+		"name": "Porto belo ",
+		"congregation": "67b12e94002ab8c05496",
+		"created_at": "2024-05-15T03:24:03.585Z",
+		"__v": 0
+	},
+	{
+		"_id": "6670d09821a70bc869c692bc",
+		"name": "Itajuipe ",
+		"congregation": "67b12e6700053083d738",
+		"created_at": "2024-06-18T00:11:04.655Z",
+		"__v": 0
+	},
+	{
+		"_id": "667cda33b9322d1b8430d39d",
+		"name": "Vilhena ",
+		"congregation": "67b12eac001c2c671464",
+		"created_at": "2024-06-27T03:19:15.890Z",
+		"__v": 0
+	},
+	{
+		"_id": "667ff5d3216f5a27d3e2a36a",
+		"name": "Salão California ",
+		"congregation": "67b12e6700053083d738",
+		"created_at": "2024-06-29T11:53:55.416Z",
+		"__v": 0
+	},
+	{
+		"_id": "66c4a25e65f8d26fc8369b7a",
+		"name": "Campos dos Goytacazes",
+		"congregation": "67b12ebd0006ce74cdf2",
+		"created_at": "2024-08-20T14:04:14.394Z",
+		"__v": 0
+	},
+	{
+		"_id": "670d6eb544027f82d78fd17d",
+		"name": "Colorado ",
+		"congregation": "67b12eac001c2c671464",
+		"created_at": "2024-10-14T19:19:17.600Z",
+		"__v": 0
+	},
+	{
+		"_id": "670f8f6377c409ad7bae0855",
+		"name": "tester",
+		"congregation": "67b12de80036d819999b",
+		"created_at": "2024-10-16T10:03:15.759Z",
+		"__v": 0
+	},
+	{
+		"_id": "6748d800e7d4f5a603d17e52",
+		"name": "D- Canarana",
+		"congregation": "67b12de80036d819999b",
+		"created_at": "2024-11-28T20:52:16.044Z",
+		"__v": 0
+	},
+	{
+		"_id": "676939f0b3b0dcbc5278400e",
+		"name": "Amélia Rodrigues ",
+		"congregation": "67b12ef7002045ca3e00",
+		"created_at": "2024-12-23T10:22:40.147Z",
+		"__v": 0
+	},
+	{
+		"_id": "67693a0cb3b0dcbc52784045",
+		"name": "Coração de Maria ",
+		"congregation": "67b12ef7002045ca3e00",
+		"created_at": "2024-12-23T10:23:08.869Z",
+		"__v": 0
+	},
+	{
+		"_id": "67693a25b3b0dcbc52784068",
+		"name": "Conceição do Jacuípe ",
+		"congregation": "67b12ef7002045ca3e00",
+		"created_at": "2024-12-23T10:23:33.823Z",
+		"__v": 0
+	},
+	{
+		"_id": "67693a38b3b0dcbc5278409a",
+		"name": "Irará ",
+		"congregation": "67b12ef7002045ca3e00",
+		"created_at": "2024-12-23T10:23:52.497Z",
+		"__v": 0
+	},
+	{
+		"_id": "6773b112960a48e2e6509eed",
+		"name": "tester",
+		"congregation": "67b12de80036d819999b",
+		"created_at": "2024-12-31T08:53:38.076Z",
+		"__v": 0
+	},
+	{
+		"_id": "679a25dc7ff7e371eb49c382",
+		"name": "Cerejeiras ",
+		"congregation": "67b12eac001c2c671464",
+		"created_at": "2025-01-29T12:58:04.061Z",
+		"__v": 0
+	},
+	{
+		"_id": "679a25ff7ff7e371eb49c3b2",
+		"name": "Cabixi",
+		"congregation": "67b12eac001c2c671464",
+		"created_at": "2025-01-29T12:58:39.543Z",
+		"__v": 0
+	}
+]

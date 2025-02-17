@@ -9,6 +9,7 @@
 		"axios": "^1.7.3",
 		"crypto": "^1.0.1",
 		"dotenv": "^16.4.5",
+		"mongoose": "^8.10.1",
 		"node-appwrite": "^13.0.0"
 	}
 }
