@@ -49,7 +49,7 @@ export default async ({ req, res, log, error }) => {
 
 		// Send the notification using the new endpoint
 		const response = await fetch('https://api.onesignal.com/notifications?c=push', options)
-
+		log(response)
 		if (!response.ok) {
 			throw new Error('Failed to send OneSignal notification')
 		}
