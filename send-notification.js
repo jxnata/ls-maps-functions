@@ -38,12 +38,14 @@ export default async ({ req, res, log, error }) => {
 		}
 
 		// Send the notification using axios
-		await axios.post(url, notificationData, {
+		const result = await axios.post(url, notificationData, {
 			headers: {
 				Authorization: `Key ${process.env.ONESIGNAL_REST_API_KEY}`,
 				'Content-Type': 'application/json',
 			},
 		})
+
+		log(result)
 
 		return res.send('Notification sent successfully', 200)
 	} catch (exception) {
