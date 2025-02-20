@@ -98,7 +98,7 @@ export default async ({ req, res, log, error }) => {
 				return res.send('Empty email, please reset Apple auth for this app and try again.', 400)
 			}
 
-			const { token, publisherId } = createSession(name, appleIdTokenClaims.email, payload.congregation)
+			const { token, publisherId } = await createSession(name, appleIdTokenClaims.email, payload.congregation)
 
 			return res.send({ ...token, publisherId })
 		}
@@ -115,7 +115,7 @@ export default async ({ req, res, log, error }) => {
 			const email = data.email
 			const name = data.name
 
-			const { token, publisherId } = createSession(name, email, payload.congregation)
+			const { token, publisherId } = await createSession(name, email, payload.congregation)
 
 			return res.send({ ...token, publisherId })
 		}
