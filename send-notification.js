@@ -13,9 +13,9 @@ const databases = new Databases(client)
 export default async ({ req, res, log, error }) => {
 	try {
 		// Get the event data from the request
-		log(req)
-		const payload = JSON.parse(req.body)
+		const payload = req.body
 
+		log(payload)
 		// If there's no assigned user, return without doing anything
 		if (!payload.assigned) {
 			return res.send('No notification needed', 200)
@@ -37,14 +37,16 @@ export default async ({ req, res, log, error }) => {
 			},
 			include_external_user_ids: [payload.assigned.$id],
 		}
+		log(notificationData)
 
 		// Send the notification using axios
-		await axios.post(url, notificationData, {
+		const result = await axios.post(url, notificationData, {
 			headers: {
 				Authorization: `Key ${process.env.ONESIGNAL_REST_API_KEY}`,
 				'Content-Type': 'application/json',
 			},
 		})
+		log(result)
 
 		return res.send('Notification sent successfully', 200)
 	} catch (exception) {
