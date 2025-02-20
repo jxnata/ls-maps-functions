@@ -37,7 +37,6 @@ export default async ({ req, res, log, error }) => {
 			},
 			include_external_user_ids: [payload.assigned.$id],
 		}
-		log(notificationData)
 
 		// Send the notification using axios
 		const result = await axios.post(url, notificationData, {
@@ -46,7 +45,7 @@ export default async ({ req, res, log, error }) => {
 				'Content-Type': 'application/json',
 			},
 		})
-		log(result)
+		log(result.data)
 
 		return res.send('Notification sent successfully', 200)
 	} catch (exception) {
