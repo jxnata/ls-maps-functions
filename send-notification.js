@@ -13,7 +13,7 @@ const databases = new Databases(client)
 export default async ({ req, res, log, error }) => {
 	try {
 		// Get the event data from the request
-		const payload = req.body
+		const payload = JSON.parse(req.body)
 
 		// If there's no assigned user, return without doing anything
 		if (!payload.assigned) {
@@ -38,7 +38,7 @@ export default async ({ req, res, log, error }) => {
 		}
 
 		// Send the notification using axios
-		const result = await axios.post(url, notificationData, {
+		await axios.post(url, notificationData, {
 			headers: {
 				Authorization: `Key ${process.env.ONESIGNAL_REST_API_KEY}`,
 				'Content-Type': 'application/json',
