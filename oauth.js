@@ -29,7 +29,7 @@ const createSession = async (name, email, congregation) => {
 		})
 
 		const token = await users.createToken(newUser.$id)
-		return res.send({ ...token, publisherId: newPublisher.$id })
+		return { token, publisherId }
 	}
 
 	let publisherId
