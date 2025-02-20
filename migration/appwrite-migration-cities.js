@@ -45,6 +45,8 @@ async function migrateCities() {
 						Permission.read(Role.label(city.congregation)),
 						Permission.update(Role.label(city.congregation)),
 						Permission.delete(Role.label(city.congregation)),
+						Permission.update(Role.label('admin')),
+						Permission.delete(Role.label('admin')),
 					]
 				)
 

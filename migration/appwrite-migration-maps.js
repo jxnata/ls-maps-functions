@@ -74,6 +74,8 @@ async function migrateMaps() {
 					Permission.read(Role.label(map.congregation)),
 					Permission.update(Role.label(map.congregation)),
 					Permission.delete(Role.label(map.congregation)),
+					Permission.update(Role.label('admin')),
+					Permission.delete(Role.label('admin')),
 				])
 
 				migratedMaps.push(result)
