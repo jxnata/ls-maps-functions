@@ -60,9 +60,9 @@ export default async ({ req, res, log, error }) => {
 	try {
 		const payload = JSON.parse(req.body)
 
-		if (!payload.oauth) throw new Error('Provide an oauth type')
+		if (!payload.provider) throw new Error('Provide an oauth type')
 
-		if (payload.oauth === 'apple') {
+		if (payload.provider === 'apple') {
 			let name
 
 			if (payload.fullName) {
@@ -103,7 +103,7 @@ export default async ({ req, res, log, error }) => {
 			return res.send({ ...token, publisherId })
 		}
 
-		if (payload.oauth === 'google') {
+		if (payload.provider === 'google') {
 			// ----------> Get Google access token <----------
 
 			const { data } = await axios.get(`https://oauth2.googleapis.com/tokeninfo?id_token=${payload.idToken}`)
