@@ -61,7 +61,7 @@ export default async ({ req, res, log, error }) => {
 		const payload = JSON.parse(req.body)
 
 		if (!payload.provider) throw new Error('Provide an oauth type')
-		log(payload.provider)
+
 		if (payload.provider === 'apple') {
 			let name
 
