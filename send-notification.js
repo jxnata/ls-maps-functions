@@ -13,6 +13,7 @@ const databases = new Databases(client)
 export default async ({ req, res, log, error }) => {
 	try {
 		// Get the event data from the request
+		log(req)
 		const payload = JSON.parse(req.body)
 
 		// If there's no assigned user, return without doing anything
