@@ -15,7 +15,6 @@ export default async ({ req, res, log, error }) => {
 		// Get the event data from the request
 		const payload = req.body
 
-		log(payload)
 		// If there's no assigned user, return without doing anything
 		if (!payload.assigned) {
 			return res.send('No notification needed', 200)
@@ -45,9 +44,8 @@ export default async ({ req, res, log, error }) => {
 				'Content-Type': 'application/json',
 			},
 		})
-		log(result.data)
 
-		return res.send('Notification sent successfully', 200)
+		return res.send(`Notification sent successfully: ${result.id}`, 200)
 	} catch (exception) {
 		error(exception)
 		return res.send('Send notification failed, please try again later.', 500)
