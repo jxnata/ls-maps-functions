@@ -28,7 +28,7 @@ export default async ({ req, res, log, error }) => {
 		if (publisher.documents[0].$id !== map.assigned.$id) throw new Error('not allowed: assigned')
 
 		await databases.updateDocument('production', 'maps', payload.$id, {
-			assigned: false,
+			assigned: null,
 			found: payload.found,
 		})
 
