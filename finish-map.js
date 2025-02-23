@@ -12,7 +12,7 @@ const users = new Users(client)
 
 export default async ({ req, res, log, error }) => {
 	try {
-		const payload = req.body
+		const payload = JSON.parse(req.body)
 		const headers = req.headers
 		const userId = headers['x-appwrite-user-id']
 
