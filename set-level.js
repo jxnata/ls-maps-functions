@@ -12,7 +12,6 @@ const users = new Users(client)
 
 export default async ({ req, res, log, error }) => {
 	try {
-		log(req)
 		// User update event
 		if (req.headers['x-appwrite-event'].includes('users')) {
 			const payload = req.body
