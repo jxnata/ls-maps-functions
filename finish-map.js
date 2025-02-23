@@ -32,7 +32,7 @@ export default async ({ req, res, log, error }) => {
 			found: payload.found,
 		})
 
-		return res.send('Map updated')
+		return res.send('Map assignment updated')
 	} catch (exception) {
 		error(exception)
 		return res.send('Middleware check error, please try again later.', 401)
