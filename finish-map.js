@@ -32,6 +32,6 @@ export default async ({ req, res, log, error }) => {
 		return res.send('Map updated')
 	} catch (exception) {
 		error(exception)
-		return res.send('Middleware check error, please try again later.', 401)
+		return res.send(exception, 401)
 	}
 }
