@@ -17,6 +17,8 @@ const databases = new Databases(client)
 const createSession = async (name, email, congregation) => {
 	const search = await users.list([Query.equal('email', email)])
 
+	let publisherId
+
 	if (search.total === 0) {
 		const newUser = await users.create(ID.unique(), email, undefined, undefined, name)
 		await users.updateLabels(newUser.$id, [congregation])
@@ -28,11 +30,11 @@ const createSession = async (name, email, congregation) => {
 			congregation: congregation || '',
 		})
 
+		publisherId = newPublisher.$id
+
 		const token = await users.createToken(newUser.$id)
 		return { token, publisherId }
 	}
-
-	let publisherId
 
 	// Verify if the publisher already exists
 	const publisherSearch = await databases.listDocuments('production', 'publishers', [
