@@ -12,9 +12,8 @@ const users = new Users(client)
 
 export default async ({ req, res, log, error }) => {
 	try {
-		log(req.body)
-		const payload = JSON.parse(req.body)
-		const headers = JSON.parse(req.headers)
+		const payload = req.body
+		const headers = req.headers
 		const userId = headers['x-appwrite-user-id']
 
 		const user = await users.get(userId)
