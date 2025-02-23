@@ -15,16 +15,14 @@ export default async ({ req, res, log, error }) => {
 		log(req)
 		// User update event
 		if (req.headers['x-appwrite-event'].includes('users')) {
-			// Get the event data from the request
 			const payload = req.body
 
-			// Check if this is a user update event and involves labels
 			if (!payload.labels) {
 				return res.send('Not a relevant user update event', 200)
 			}
 
-			// Check if 'admin' label was added or removed
 			const adminAdded = payload.labels.includes('admin')
+			const newLevel = adminAdded ? 1 : 3
 
 			// Find the publisher in production database
 			const publisher = await databases.listDocuments('production', 'publishers', [
@@ -35,32 +33,37 @@ export default async ({ req, res, log, error }) => {
 				return res.send('No publisher found for this user', 200)
 			}
 
-			// Update publisher level
-			const newLevel = adminAdded ? 1 : 3
+			// Check if the level is already correct to avoid loops
+			if (publisher.documents[0].level === newLevel) {
+				return res.send('Publisher level already synchronized', 200)
+			}
 
 			await databases.updateDocument('production', 'publishers', publisher.documents[0].$id, { level: newLevel })
-
 			return res.send(`Publisher level updated to ${newLevel}`, 200)
 		}
 
 		// Publisher update event
 		if (req.headers['x-appwrite-event'].includes('databases.production.collections.publishers.documents')) {
-			// Get the event data from the request
 			const payload = req.body
 
-			// Check if this is a publisher update event and involves level
 			if (!payload.level) {
 				return res.send('Not a relevant publisher update event', 200)
 			}
 
-			// Update user level
 			const user = await users.get(payload.user)
 
+			if (!user) return res.send('User not found', 200)
+
+			const hasAdminLabel = user.labels.includes('admin')
+
+			// Check if the label is already correct to avoid loops
+			if ((payload.level === 1 && hasAdminLabel) || (payload.level !== 1 && !hasAdminLabel)) {
+				return res.send('User labels already synchronized', 200)
+			}
+
 			if (payload.level === 1) {
-				// Add 'admin' label to the user
 				await users.updateLabels(user.$id, [...user.labels.filter((label) => label !== 'admin'), 'admin'])
 			} else {
-				// Remove 'admin' label from the user
 				await users.updateLabels(
 					user.$id,
 					user.labels.filter((label) => label !== 'admin')
