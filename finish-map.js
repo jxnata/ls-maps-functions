@@ -1,4 +1,4 @@
-import { Client, Databases, Users } from 'node-appwrite'
+import { Client, Databases, Query, Users } from 'node-appwrite'
 
 const client = new Client()
 
@@ -19,10 +19,13 @@ export default async ({ req, res, log, error }) => {
 		const user = await users.get(userId)
 		const userLabels = user.labels || []
 
-		const document = await databases.getDocument('production', 'maps', payload.$id)
+		const map = await databases.getDocument('production', 'maps', payload.$id)
+		const publisher = await databases.listDocuments('production', 'publishers', [Query.equal('user', userId)])
 
-		if (!userLabels.includes(document.congregation.$id)) throw new Error('not allowed: congregation')
-		if (userId !== document.assigned.$id) throw new Error('not allowed: assigned')
+		if (!map) throw new Error('not allowed: map not found')
+		if (!publisher.documents[0]) throw new Error('not allowed: publisher not found')
+		if (!userLabels.includes(map.congregation.$id)) throw new Error('not allowed: congregation')
+		if (publisher.documents[0].$id !== map.assigned.$id) throw new Error('not allowed: assigned')
 
 		await databases.updateDocument('production', 'maps', payload.$id, {
 			assigned: false,
