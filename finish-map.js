@@ -30,6 +30,7 @@ export default async ({ req, res, log, error }) => {
 		await databases.updateDocument('production', 'maps', payload.$id, {
 			assigned: null,
 			found: payload.found,
+			visited: Date.now(),
 		})
 
 		return res.send('Map assignment updated')
