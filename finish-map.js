@@ -31,6 +31,7 @@ export default async ({ req, res, log, error }) => {
 			assigned: null,
 			found: payload.found,
 			visited: new Date().toISOString(),
+			visited_by: user.name,
 		})
 
 		return res.send('Map assignment updated')
